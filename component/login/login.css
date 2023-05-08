@@ -10,7 +10,7 @@
   border-radius: 5px;
   backdrop-filter: blur(15px);
   padding: 2rem;
-
+  box-shadow: 5px 10px #1c1c1c;
 }
 .login-form input{
   padding: 0.6rem;

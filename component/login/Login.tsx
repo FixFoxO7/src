@@ -12,7 +12,10 @@ import { useNavigate } from "react-router-dom";
 //import { ActionType } from '../../redux/action-types';
 
 function Login() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  let navigateToUserHomePage = ()=>{
+    navigate('/userHomePage');
+  }
   let [userName, setUserName] = useState("");
   let [password, setPassword] = useState("");
   let dispatch = useDispatch();
@@ -28,7 +31,8 @@ function Login() {
       let loginData = JSON.parse(strLoginData);
       axios.defaults.headers.common["Authorization"] = "Bearer" + token;
       dispatch({ type: ActionType.LoginData, payload: { loginData } });
-      alert("Login sucsees");
+      dispatch({ type: ActionType.saveUserName, payload: { userName } });
+      navigateToUserHomePage();
     } catch (e: any) {
       console.error(e);
       if (e.response?.data?.errorMessage) {
